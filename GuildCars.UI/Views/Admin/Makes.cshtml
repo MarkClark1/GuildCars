@@ -1,0 +1,36 @@
+﻿@model GuildCars.Models.PageViewModels.AdminMakeViewModel
+@{
+    ViewBag.Title = "Makes";
+}
+
+<h2>Makes</h2>
+<div class="container">
+   @using (Html.BeginForm("Makes", "Admin", FormMethod.Post))
+   {
+       <label for="make-input">New Make</label>
+       @Html.TextBoxFor(x => x.MakeInput);
+       <button type="submit">Save</button>
+   }
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Date Added</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Makes)
+            {
+                <tr>
+                    <th>@m.Name</th>
+                    <th>@m.DateAdded.ToShortDateString()</th>
+                    <th>@m.EmailOfAdder</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+

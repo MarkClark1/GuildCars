@@ -1,0 +1,47 @@
+﻿@model GuildCars.Models.PageViewModels.HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-block w-100" src="..." alt="Third slide">
+                    <h2> The Place to buy cars</h2>
+                    <h3 class="text-center">Its true</h3>
+                </div>
+            </div>
+            @foreach (var special in Model.specials)
+            {
+                <div class="carousel-item">
+                    <div class="d-block w-100">
+                        <h2> @special.Title</h2>
+                        <h3 class="text-center">@special.Description</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <h1>Featured Vehicles</h1>
+    <hr />
+</div>
+<div class="row">
+    @foreach (var v in Model.featuredVehicles.features)
+    {
+        <div class="col-md-3">
+            <div class="row">
+                <img src="@v.VehicleImagePath" alt="Car place holder" style="width: 70%; height: 70%;"/>
+            </div>
+            <div class="row">
+                <ul style="list-style: none; margin-left: -31px;">
+                    <li> <a href="http://localhost:56259/Inventory/Details/@v.VehicleId">@v.YearMakeModel</a></li>
+                    <li><h5 class="text-center">$@v.SalePrice</h5></li>
+                </ul>             
+            </div>       
+        </div>
+    }
+</div>

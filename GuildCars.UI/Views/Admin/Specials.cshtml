@@ -1,0 +1,39 @@
+﻿@model GuildCars.Models.PageViewModels.AdminSpecialViewModel
+@{
+    ViewBag.Title = "Specials";
+}
+
+
+<div class="container">
+    <h2>Specials</h2>
+    <div class="row border">
+        @using (Html.BeginForm("Specials", "Admin", FormMethod.Post))
+        {
+            <div class="col-md-6">
+                <label>Title</label>
+                @Html.TextBoxFor(x => x.Title, new { style = "margin-top: 15px;" })
+                <label>Description</label>
+                @Html.TextAreaFor(x => x.Description, new { @style = "height: 175px; width: 250px;" })
+                <button type="submit" style="margin-bottom: 15px;">Save</button>
+            </div>
+        }
+    </div>
+
+    <div class="container">
+        @foreach (var s in Model.Specials)
+        {
+            <div class="row border" style="margin: 15px;">
+                <div class="col-md-2" style="margin: 15px;">
+                    <h5>@s.Title   </h5>
+                </div>
+
+                <div class="col-md-4" style="height: 50px; margin: 20px;">
+                    <p class="text-center">@s.Description</p>
+                </div>
+                <div class="col-md-2">
+                    <a href="http://localhost:56259/Admin/DeleteSpecial/@s.SpecialId" class="btn btn-danger" style="margin-top: 25px;">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

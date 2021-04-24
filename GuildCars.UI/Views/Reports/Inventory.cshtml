@@ -1,0 +1,57 @@
+﻿@model GuildCars.Models.Queries.VehicleInventoryViewModel
+@{
+    ViewBag.Title = "Inventory";
+}
+<div class="container">
+    <h2>Inventory Report</h2>
+    <h4>New Vehicles</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Count</th>
+                <th>Stock Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.NewInventory)
+            {
+            <tr>
+                <th>@m.Year</th>
+                <th>@m.MakeName</th>
+                <th>@m.ModelName</th>
+                <th>@m.Count</th>
+                <th>$@m.TotalStock</th>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <h4>Used Vehicles</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Count</th>
+                <th>Stock Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.UsedInventory)
+            {
+            <tr>
+                <th>@m.Year</th>
+                <th>@m.MakeName</th>
+                <th>@m.ModelName</th>
+                <th>@m.Count</th>
+                <th>$@m.TotalStock</th>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,77 @@
+﻿@model GuildCars.Models.PageViewModels.AddVehicleViewModel
+@{
+    ViewBag.Title = "AddVehicle";
+}
+
+<h2>AddVehicle</h2>
+<div class="row">
+    @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmUpload" }))
+    {
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Make</p>
+                    <select id="MakeId" name="Vehicle.MakeId"></select>
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Model</p>
+                    <select id="ModelId" name="Vehicle.ModelId"></select>
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Type</p>
+                    @Html.DropDownListFor(m => m.Vehicle.Type, new List<SelectListItem> { new SelectListItem { Value = "New", Text = "New" }, new SelectListItem { Value = "Used", Text = "Used" } })
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Body Style</p>
+                    @Html.DropDownListFor(m => m.Vehicle.Style, new List<SelectListItem> { new SelectListItem { Value = "Van", Text = "Van" }, new SelectListItem { Value = "Truck", Text = "Truck" }, new SelectListItem { Value = "Car", Text = "Car" }, new SelectListItem { Value = "SUV", Text = "SUV" } })
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Year</p>
+                    @Html.TextBoxFor(x => x.Vehicle.Year)
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Transmission</p>
+                    @Html.DropDownListFor(m => m.Vehicle.Transmission, new List<SelectListItem> { new SelectListItem { Value = "Manual", Text = "Manual" }, new SelectListItem { Value = "Auto", Text = "Auto" } })
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Color</p>
+                    @Html.TextBoxFor(x => x.Vehicle.Color)
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Interior</p>
+                    @Html.TextBoxFor(x => x.Vehicle.Interior)
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Mileage</p>
+                    @Html.TextBoxFor(x => x.Vehicle.Mileage, new { @type = "number" })
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>VIN #</p>
+                    @Html.TextBoxFor(x => x.Vehicle.Vin, new { @type = "text" })
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>Sale Price</p>
+                    @Html.TextBoxFor(x => x.Vehicle.SalePrice, new { @type = "number" })
+                </div>
+                <div class="col-md-5 border" style="margin: 3px;">
+                    <p>MSRP</p>
+                    @Html.TextBoxFor(x => x.Vehicle.MSRP, new { @type = "number" })
+                </div>
+                <div class="col-md-10 border" style="margin: 3px;">
+                    <p>Description</p>
+                    @Html.TextAreaFor(x => x.Vehicle.Description, new { @style = "width: 600px; height: 100px;" })
+                </div>
+                <div class="col-md-10 border" style="margin: 3px;">
+                    <p>Image</p>
+                    @Html.TextBoxFor(r => r.Image, new { type = "file", @class = "form-control", style="margin-bottom: 10px;" })
+                </div>
+            </div>
+        </div>
+     
+
+        <input type="submit" class="btn btn-dark" value="Submit" style="margin: 15px;" />
+
+    }
+</div>
+<script src="~/OurScripts/GetMakesAndModels.js"></script>

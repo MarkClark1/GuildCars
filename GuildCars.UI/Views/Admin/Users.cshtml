@@ -1,0 +1,35 @@
+﻿@model List<GuildCars.Models.Tables.User>
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="container">
+    <h2>Users</h2>
+    @Html.ActionLink("Add User", "AddUser", "Admin", routeValues: null, htmlAttributes: new { id = "registerLink" })
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in Model)
+            {
+            <tr>
+                <th>@u.LastName</th>
+                <th>@u.FirstName</th>
+                <th>@u.Email</th>
+                <th>@u.Role</th>
+                <th><a href="http://localhost:56259/Admin/EditUser/@u.Id" class="btn btn-dark")>Edit</a></th>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

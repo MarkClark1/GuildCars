@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "New";
+}
+<h4>New Vehicles</h4>
+<div class="container border">
+    <div class="row">
+        <h5 style="margin: 17px;">Quick Search</h5>
+    </div>
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <input type="text" id="make-model-input" placeholder="Make or Model" style="margin: 7px;" />
+        </div>
+
+        <div class="col-md-4 form-group">
+            <div class="row">
+                <span style="margin: 5px;">Price Range</span>
+                <select class="form-control col-md-4" id="min-price-input">
+                    <option value="0">None</option>
+                    @for (int i = 1000; i <= 20000; i += 500)
+                    {
+                        <option value="@i">$@i</option>
+                    }
+                </select>
+                <span style="margin: 5px;">To</span>
+                <select class="form-control col-md-4" id="max-price-input">
+                    <option value="900000">None</option>
+                    @for (int i = 5000; i <= 30000; i += 500)
+                    {
+                        <option value="@i">$@i</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <span style="margin: 5px; margin-left: 35px;">Year</span>
+                <select class="form-control col-md-4" id="min-year-input">
+                    <option value="0">None</option>
+                    @for (int i = 1970; i <= 2017; i += 1)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <span style="margin:5px;">To</span>
+                <select class="form-control col-md-4" id="max-year-input">
+                    <option value="2100">None</option>
+                    @for (int i = 1970; i <= 2019; i += 1)
+                    {
+                        <option value="@i"> @i</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 20px; margin-left: 25px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <button id="search-button" class="btn btn-dark float" style="margin: 10px; width: 500px;">Search</button>
+        </div>
+    </div>
+</div>
+<h4>Search Results</h4>
+<div id="results" class="container">
+
+</div>
+<script src="~/OurScripts/SearchNewVehicle.js"></script>

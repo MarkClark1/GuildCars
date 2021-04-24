@@ -1,0 +1,47 @@
+﻿@model GuildCars.Models.PageViewModels.ReportSalesViewModel
+@{
+    ViewBag.Title = "Sales";
+}
+
+<h2>Sales</h2>
+
+<div class="container border">
+    <div class="row">
+        <h5>Filters</h5>
+    </div>
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label for="price-div" class="control-label">User</label>
+            <select class="form-control col-md-4" id="select-user">
+                <option value="">All</option>
+                @foreach (var u in Model.users)
+                {
+                    <option value="@u.Id">@u.Email</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-8">
+            <span>From Date</span>
+            <input type="number" id="from-date" />
+            <span>To Date</span>
+            <input type="number" id="to-date" />
+        </div>
+    </div>
+    <div class="row">
+        <div id="search-button" class="btn btn-dark">Search</div>
+    </div>
+</div>
+<div class="container">
+    <h5>Search Results</h5>
+    <table class="table table-striped" style="width: 500px;">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Totale Sales</th>
+                <th>Total Vehicles</th>
+            </tr>
+        </thead>
+        <tbody id="user-table"></tbody>
+    </table>
+</div>
+<script src="~/OurScripts/SalesReport.js"></script>

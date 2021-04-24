@@ -1,0 +1,99 @@
+﻿@model GuildCars.Models.PageViewModels.SalesPurchaseViewModel
+@{
+    ViewBag.Title = "Purchase";
+}
+<div class="container">
+    <h2>Sales Information</h2>
+    <div class="row">
+        <div class="col-md-3">
+
+            <h6>@Model.Vehicle.Year @Model.Vehicle.Make @Model.Vehicle.Model</h6>
+            <img src="@Model.ImageFilePath" style="width: 250px; height: auto;" />
+        </div>
+
+        <div class="col-md-3">
+            Body Style: @Model.Vehicle.Style<br />
+            Trans: @Model.Vehicle.Transmission<br />
+            Color: @Model.Vehicle.Color<br />
+        </div>
+
+        <div class="col-md-3">
+            Interior: @Model.Vehicle.Interior<br />
+            Mileage: @Model.Vehicle.Mileage<br />
+            VIN #: @Model.Vehicle.Vin<br />
+        </div>
+
+        <div class="col-md-3">
+            Sale Price: $@Model.Vehicle.SalePrice<br />
+            MSRP: $@Model.Vehicle.MSRP<br />
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-10 text-center">Description: @Model.Vehicle.Description</div>
+    </div>
+    <div class="row">
+        @using (Html.BeginForm("Purchase", "Sales", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmUpload" }))
+        {
+            @Html.HiddenFor(x=>x.Vehicle.MSRP)
+            @Html.HiddenFor(x=>x.Vehicle.SalePrice)
+            @Html.HiddenFor(x=>x.Sale.PurchaseDate)
+            @Html.HiddenFor(x => x.Sale.VehicleId)
+            @Html.HiddenFor(x => x.Sale.UserId)
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>Name</p>
+                        @Html.TextBoxFor(x => x.Sale.Name)
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>Phone</p>
+                        @Html.TextBoxFor(x => x.Sale.Phone)
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>Email</p>
+                        @Html.TextBoxFor(x => x.Sale.Email)
+                    </div>
+                    <div class="col-md-5" style="margin: 3px;">
+
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>Steet One</p>
+                        @Html.TextBoxFor(x => x.Sale.StreetOne)
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>Steet Two</p>
+                        @Html.TextBoxFor(x => x.Sale.StreetTwo)
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>City</p>
+                        @Html.TextBoxFor(x => x.Sale.City)
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>State</p>
+                        @Html.DropDownListFor(x => x.Sale.State, new List<SelectListItem> { new SelectListItem { Value = "Mn", Text = "Mn" }, new SelectListItem { Value = "WI", Text = "WI" } })
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>ZipCode</p>
+                        @Html.TextBoxFor(x => x.Sale.ZipCode)
+                    </div>
+                    <div class="col-md-5" style="margin: 3px;">
+                    </div>
+                    <hr />
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>Purchase Price</p>
+                        @Html.TextBoxFor(x => x.Sale.PurchasePrice)
+                    </div>
+                    <div class="col-md-5 border" style="margin: 3px;">
+                        <p>Purchase Type</p>
+
+                        @Html.DropDownListFor(x => x.Sale.PurchaseType, new List<SelectListItem> { new SelectListItem { Value = "Bank Finance", Text = "Bank Finance" }, new SelectListItem { Value = "Cash", Text = "Cash" }, new SelectListItem { Value = "Dealer Finance", Text = "Dealer Finance" } })
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-dark" value="Submit" style="margin: 15px;" />
+
+        }
+    </div>
+
+</div>
